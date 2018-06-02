@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.67% </span>
+        <span class="strong">93.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/24</span>
+        <span class='fraction'>14/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/12</span>
+        <span class='fraction'>7/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.11% </span>
+        <span class="strong">92.86% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/19</span>
+        <span class='fraction'>13/14</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -74,78 +74,69 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
+//TODO: change type to not be typeof object and use instanceof Array
+&nbsp;
 const fs = require('fs');
 &nbsp;
-// Wrap the fs.readFile method with our interface so that we can properly test it modularly.
-module.exports = exports = (arr, callback) =&gt; {
-  if(!arr || !Array.isArray(arr)) return null;
-  for(let i=0; i&lt;arr.length; i++){
-    if (typeof arr[i] !== 'string') return null;
-  }  
-  const test = [];
-  let count = 0;
+module.exports = exports = (path, callback) =&gt; {
+  let type = typeof path;
+  let dataArray = [];
 &nbsp;
-  fs.readFile( `${__dirname}/${arr[count]}`, <span class="fstat-no" title="function not covered" >(e</span>rr, data) =&gt; {
-<span class="cstat-no" title="statement not covered" >    if(err) <span class="cstat-no" title="statement not covered" >return callback(err);</span></span>
-    else { 
-<span class="cstat-no" title="statement not covered" >      test.push(data.toString()); </span>
-<span class="cstat-no" title="statement not covered" >      count++;</span>
-<span class="cstat-no" title="statement not covered" >      fs.readFile( `${__dirname}/${arr[count]}`, <span class="fstat-no" title="function not covered" >(e</span>rr, data) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if(err) <span class="cstat-no" title="statement not covered" >return callback(err);</span></span>
-        else { 
-<span class="cstat-no" title="statement not covered" >          test.push(data.toString()); </span>
-<span class="cstat-no" title="statement not covered" >          count++;</span>
-<span class="cstat-no" title="statement not covered" >          fs.readFile( `${__dirname}/${arr[count]}`, <span class="fstat-no" title="function not covered" >(e</span>rr, data) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            if(err) <span class="cstat-no" title="statement not covered" >return callback(err);</span></span>
-            else { 
-<span class="cstat-no" title="statement not covered" >              test.push(data.toString()); </span>
-<span class="cstat-no" title="statement not covered" >              return callback(null, test);</span>
-      }});
-    }});
-  }});
-}</pre></td></tr>
+  if (type === 'object' &amp;&amp; path.length) { // Don't use type of Object for an Array
+    for (let i = 0; i &lt; path.length; i ++ ) {
+      fs.readFile(path[i], (error, data) =&gt; {
+        if (error) {
+          callback(error);
+        }
+        else {
+          dataArray.push(data.toString().trim());
+        }
+      });
+    }
+    callback(null, dataArray);
+  } else {
+    fs.readFile(path, (err, data) =&gt; {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (err) { callback(err); }
+      else { <span class="cstat-no" title="statement not covered" >callback(data.toString().trim()); </span>}
+    });
+  }
+};</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jun 02 2018 15:13:14 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jun 02 2018 15:19:39 GMT-0700 (PDT)
 </div>
 </div>
 <script src="prettify.js"></script>

@@ -1,37 +1,32 @@
 'use strict';
 
+jest.mock('fs');
+
 const reader = require('../lib/reader.js');
 
 describe('File Reader Module', () => {
-
-  it('when given a bad filepath, returns an error', () => {
-   
-    let file = `${__dirname}/../../data/file.txt`;
-    reader(file, (err,data) => {
+  
+  it('When given a bad file, returns an error', () => {
+    let path = `${__dirname}/../../data/bad.txt`;
+    reader(path, (err, data) => {
       expect(err).toBeDefined();
     });
   });
 
-  it('when given a real file, returns the contents', () => {
-    let file = `${__dirname}/../../data/file1.txt`;
-    reader(file, (err,data) => {
-      expect(err).toBeUndefined(); 
-      expect(typeof data).toBe('string');
+  
+  it('When given an array of at least one invalid File paths, returns an error', () => {
+    let path = [`${__dirname}/../../data/bad.txt`, `${__dirname}/../../data/good.txt`, `${__dirname}/../../data/bad.txt`];
+    reader(path, (err) => {
+      expect(err).toBeDefined();
     });
   });
 
-  it('should return null if invalid arguments are passed', () => {
-    // console.log(reader(4));
-    expect(reader(4)).toBeNull();
-    expect(reader([4, 5])).toBeNull();
+  it('When given an array of valid File paths, returns an array of strings that contain text of each file', () => {
+    let path = [`${__dirname}/../../data/fine.txt`, `${__dirname}/../../data/good.txt`, `${__dirname}/../../data/okay.txt`, `${__dirname}/../../data/okay.txt`, `${__dirname}/../../data/okay.txt`, `${__dirname}/../../data/okay.txt` ];
+    reader(path, (err, data) => {
+      expect(data).toEqual(['File Contents', 'File Contents', 'File Contents', 'File Contents', 'File Contents', 'File Contents']);
+    });
   });
 
-  it('should print the content of the files in order of the files', () => {
-    return reader(['../data/filee.txt', '../data/filee2.txt', '../data/filee3.txt'], (err, callback) => {
-      if (err) console.error(err);
-      callback = callback.map(file => file.charAt(0));
-      expect(callback).toBe('B', 'T', 'M');
-    })
-  })
 
 });

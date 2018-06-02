@@ -4,9 +4,9 @@ module.exports = exports = {};
 
 exports.readFile = (file , cb) => {
   if ( file.match(/bad/i)) {
-    callback('Invalid File');
+    cb('Invalid File');
   }
   else {
-    callback(undefined, new Buffer('File Contents'));
+    cb(undefined, new Buffer('File Contents'));
   }
 };
