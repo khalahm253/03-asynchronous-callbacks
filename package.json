@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "jest --coverage --verbose",
-    "test-watch": "jest --watchAll --coverage --verbose"
+    "test-watch": "jest --watchAll --coverage --verbose",
+    "lint": "eslint **/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/khalahm253/03-asynchronous-callbacks#readme",
   "dependencies": {
+    "eslint": "^4.19.1",
     "jest": "^23.0.1"
   }
 }
