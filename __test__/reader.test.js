@@ -27,7 +27,7 @@ describe('File Reader Module', () => {
   });
 
   it('should print the content of the files in order of the files', () => {
-    return reader(['../../data/file1.txt', '../../data/file2.txt', '../../data/file3.txt'], (err, callback) => {
+    return reader(['../data/filee.txt', '../data/filee2.txt', '../data/filee3.txt'], (err, callback) => {
       if (err) console.error(err);
       callback = callback.map(file => file.charAt(0));
       expect(callback).toBe('B', 'T', 'M');

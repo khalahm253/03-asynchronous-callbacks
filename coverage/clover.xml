@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1527977240610" clover="3.2.0">
-  <project timestamp="1527977240610" name="All files">
+<coverage generated="1527977594577" clover="3.2.0">
+  <project timestamp="1527977594577" name="All files">
     <metrics statements="19" coveredstatements="8" conditionals="12" coveredconditionals="6" methods="4" coveredmethods="1" elements="35" coveredelements="15" complexity="0" loc="19" ncloc="19" packages="1" files="1" classes="1">
       <file name="reader.js" path="/Users/bossupbands/codefellows/401/03-asynchronous-callbacks/lib/reader.js">
         <metrics statements="19" coveredstatements="8" conditionals="12" coveredconditionals="6" methods="4" coveredmethods="1"/>
